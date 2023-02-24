@@ -1,3 +1,431 @@
-body{
-  color: #abeafe; 
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem;
+}
+html {
+  font-size: 62.5%;
+}
+/* Configuração do Cabeçalho */
+header {
+  height: 95vh;
+  background-image: linear-gradient(
+      to bottom right,
+      rgba(128, 58, 213, 0.9),
+      rgba(53, 20, 94, 0.8)
+    ),
+    url(../images/fundo-header.png); /* colocar a imagem também*/
+  background-size: top;
+  clip-path: polygon(0 0, 0 100%, 100% 70vh, 100% 0);
+  position: relative;
+}
+header .foto {
+  position: absolute;
+  top: 6rem;
+  right: 9rem;
+}
+header .foto img {
+  height: 20rem;
+  border-radius: 100%;
+  animation: profile 1s ease;
+  animation-fill-mode: backwards;
+}
+header .texto-header {
+  position: absolute;
+  color: #fff;
+  text-transform: uppercase;
+  width: 100%;
+  top: 45%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+header .texto-header h1 {
+  font-size: 50px;
+  letter-spacing: 2rem;
+  text-shadow: 0.5rem 1rem 1rem #000;
+  animation: entradaPelaEsquerda 1s ease-out;
+}
+header .texto-header h2 {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 1.74rem;
+  text-shadow: 0.5rem 0.5rem 1rem #000;
+  animation: entradaPelaDireita 1s 0.1s ease;
+  animation-fill-mode: backwards;
+  margin-bottom: 8rem;
+}
+
+.btn:link,
+.btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 5rem;
+  transition: all 0.2s;
+  position: relative;
+}
+.btn:hover {
+  transform: translateY(-0.3rem);
+  box-shadow: 0 1rem 2rem #000;
+}
+.btn:active {
+  transform: translateY(-0.1rem);
+  box-shadow: 0 0.5rem 1rem #000;
+}
+.btn-primario {
+  background-color: #fff;
+  color: #777;
+  padding: 1.5rem 4rem;
+  display: inline-block;
+}
+
+.btn::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 0.2s;
+}
+.btn-primario::after {
+  background-color: #fff;
+}
+.btn-primario:hover::after {
+  transform: scaleX(1.5) scaleY(1.6);
+  opacity: 0;
+}
+
+.btn-animado {
+  animation: entradaPorBaixo 0.5s 0.5s ease-out;
+  animation-fill-mode: backwards;
+}
+ /* Sessão Sobre Mim */
+.sobreMim {
+  background-color: #f7f7f7;
+  padding-top: 30rem;
+  margin-top: -25vh;
+  padding-bottom: 8rem;
+  margin-bottom: 8rem;
+  z-index: 5;
+  height: 100vh;
+}
+.sobreMim h3,
+.habilidades h4 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  background-image: linear-gradient(
+    to right,
+    rgba(128, 58, 213),
+    rgba(53, 20, 94)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 0.2rem;
+  margin-bottom: 3rem;
+}
+.sobreConteudo {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: justify;
+}
+.sobreConteudo .texto {
+  width: 40vw;
+  margin-right: 10vw;
+}
+.sobreConteudo .texto h4 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.sobreConteudo .pessoal {
+  margin-bottom: 3rem;
+}
+.sobreConteudo .imagens {
+  position: relative;
+  width: 40vw;
+}
+.sobreConteudo .imagens figure img {
+  width: 30rem;
+}
+.sobreConteudo figure {
+  position: absolute;
+  transition: all 0.2s;
+}
+.sobreConteudo figure:first-child {
+  top: 0rem;
+  left: 1rem;
+  z-index: 3;
+}
+.sobreConteudo figure:nth-child(2) {
+  top: 9rem;
+  left: 15rem;
+  z-index: 4;
+}
+.sobreConteudo figure:last-child {
+  top: 5rem;
+  right: 15rem;
+  z-index: 5;
+}
+
+.sobreConteudo figure:hover {
+  z-index: 8;
+  outline: 1rem solid rgba(53, 20, 94);
+  outline-offset: 1rem;
+}
+
+/* Sessão de Habilidades */
+.habilidades {
+  background-color: rgba(128, 58, 213);
+  transform: skewy(5deg);
+  position: relative;
+  z-index: 1;
+  margin-top: -20rem;
+  padding: 20rem 0;
+  height: 150vh;
+}
+.habilidades h4,
+.habilidades .skills {
+  transform: skewY(-5deg);
+}
+.habilidades h4 {
+  color: #fff;
+  background-image: none;
+}
+.habilidades .skills {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.habilidades .card{
+    position: relative;
+    perspective: 150rem;
+    -webkit-perspective: 150rem;
+    width: 30vw;
+    height: 70rem;
+}
+.habilidades .frente{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    backface-visibility: hidden;
+    transition: all .8s ease-in-out;
+    box-shadow: 0 1.5rem 4rem rgba(0,0,0,.6);
+    border-radius: .5rem;
+}
+.habilidades .verso{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color:#fff;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+    border-radius: .5rem;
+    transition: all .8s ease-in-out;
+    box-shadow: 0 1.5rem 4rem rgba(0,0,0,.6);
+
+}
+.habilidades .card:hover .frente{
+    transform: rotateY(-180deg);
+}
+.habilidades .card:hover .verso{
+    transform: rotateY(0deg);
+}
+.habilidades .destaque{
+    background-blend-mode: color;
+    background-size: cover;
+    height: 40%;
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+}
+.habilidades ul{
+    list-style-type: none;
+    width: 80%;
+    margin: 1rem auto;
+}
+.habilidades  ul li{
+    padding: 2rem 3rem;
+}
+.habilidades  ul li:not(:last-child){
+    border-bottom: 2px solid #c7c7c7;
+}
+.habilidades .destaque h5{
+    font-size: 2.8rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #fff;
+    position: absolute;
+    text-align: right;
+    padding-bottom: 5rem;
+    top: 19%;
+    left: 50%;
+}
+.habilidades .front .destaque{
+    background-image: linear-gradient(to bottom right, #ffb900, #ff7730), url(../images/fundo-header.png);
+}
+.habilidades .front .destaque h5{
+    background-color: #ff7730;
+}
+.habilidades .back .destaque{
+    background-image: linear-gradient(to bottom right, #2998ff, #5643fa), url(../images/fundo-header.png);
+}
+.habilidades .back .destaque h5{
+    background-color: #2998ff;
+}
+.habilidades .demais .destaque{
+    background-image: linear-gradient(to bottom right, #7ed56f, #28b485), url(../images/fundo-header.png);
+}
+.habilidades .demais .destaque h5{
+    background-color: #28b485;
+}
+.habilidades .card .verso h5{
+    font-size: 5rem;
+    padding: 3rem 3rem;
+}
+.habilidades .front .verso{
+    background-image: linear-gradient(to bottom right, #ffb900, #ff7730);
+}
+.habilidades .back .verso{
+    background-image: linear-gradient(to bottom right, #2998ff, #5643fa);
+}
+.habilidades .demais .verso{
+    background-image: linear-gradient(to bottom right, #7ed56f, #28b485);
+}
+/* Sessão de Testemunhos  */
+.testemunhos{
+  position: relative;
+}
+.testemunhos video{
+    width: 100%;
+    margin-top: -8.5rem;
+    z-index: -3;
+}
+.testemunhos .comentarios{
+  background-color: #c7c7c711;
+  width: 100%;
+  z-index: 0;
+  padding-top: 20rem;
+  position: absolute;
+  top: -10rem;
+  left: 0;
+}
+.comentarios h3{
+  text-align: center;
+  font-size: 4rem;
+  margin-bottom: 5rem;
+  color: #fff;
+}
+.comentarios .items{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 74.5rem;
+}
+.item{
+  position: relative;
+  margin-bottom: 12.8rem;
+  width: 75%;
+  background-color: #ffffff;
+  transform: skewX(-20deg);
+}
+.item *{
+  transform: skewX(12deg);
+}
+.item figure img{
+  border-radius: 100%;
+  width: 18%;
+  padding: 4rem;
+  margin-left: 5rem;
+}
+.item figure figcaption{
+  position:absolute;
+  bottom: 0;
+  left: 13rem;
+  font-size: 3rem;
+  color: #fff;
+  opacity: 0;
+  transition: all .2s;
+}
+.item figure:hover figcaption{
+  opacity: 1;;
+  bottom: 8rem;
+}
+.item p{
+  width: 80%;
+  float: right;
+  margin-top: -15rem;
+}
+
+footer{
+  padding: 5rem;
+  background-color: #000;
+  margin-top: -2rem;
+  text-align: center;
+}
+
+/* Animações */
+@keyframes entradaPelaEsquerda {
+  0% {
+    transform: translateX(-10rem);
+    opacity: 0;
+  }
+  80% {
+    transform: translateX(3rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes entradaPelaDireita {
+  0% {
+    transform: translateX(10rem);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes entradaPorBaixo {
+  0% {
+    opacity: 0;
+    transform: translateY(10rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes profile {
+  0% {
+    transform: scale(0) rotate3d(0, 20, 0, 180deg);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
